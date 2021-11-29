@@ -1,0 +1,60 @@
+.Profile {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.aboutCard {
+  width: 355px;
+  height: 455px;
+  border-radius: 10px;
+  padding-top: 20px;
+  background-color: var(--lightgray-primary);
+}
+
+.profileTop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilePicture {
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+  box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%),
+    0 3px 5px -1px rgb(0 0 0 / 20%);
+}
+
+.profileBottom {
+  display: flex;
+  align-items: center;
+  margin-left: 90px;
+}
+
+.profileBottom p {
+  margin-left: 10px;
+}
+
+.profilePicture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.profileTop p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profileSocial {
+  display: flex;
+  margin-top: 30px;
+  margin-left: 90px;
+}
+
+.profileSocial svg {
+  margin-right: 10px;
+}

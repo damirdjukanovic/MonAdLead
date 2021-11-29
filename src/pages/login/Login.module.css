@@ -1,0 +1,82 @@
+.Login {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.3fr 1.7fr;
+}
+
+.loginLeft {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginRight {
+}
+
+.loginRight img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.loginCompanyLogo {
+  width: 150px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.loginCompanyLogoImage {
+  width: 100%;
+  height: 100%;
+}
+
+.loginCompanyDescription {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 auto;
+  color: lightblue;
+}
+
+.loginLeftCenter {
+  width: 80%;
+  height: 70%;
+
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.TextField {
+  width: 100%;
+}
+
+.forgotPassword {
+  color: lightblue;
+  text-align: right;
+}
+
+.loginButton {
+  background-color: blue;
+  color: white;
+  border: 1px solid gray;
+  border-radius: 15px;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  height: 60px;
+}
+
+ul {
+  list-style-type: none;
+  margin-block-start: 0px;
+  padding-inline-start: 0px;
+}
+
+.trademarkText {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 0.7rem;
+}

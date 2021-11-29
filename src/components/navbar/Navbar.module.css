@@ -1,0 +1,134 @@
+.navbar {
+  box-sizing: border-box;
+  background-color: var(--lightgray-primary);
+  color: var(--lightgray-secondary);
+  position: fixed;
+  z-index: 1;
+  padding: 10px;
+  left: 0;
+  top: 0;
+  height: 75px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 25px 0px 25px;
+}
+
+.navbarUserName {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.navbarUserName p {
+  margin-right: 15px;
+}
+
+.navbar svg {
+  fill: var(--lightgray-secondary);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.sidebar {
+  box-sizing: border-box;
+  background-color: var(--lightgray-primary);
+  color: var(--lightgray-secondary);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  width: 225px;
+  padding: 15px;
+  overflow: hidden;
+  left: -100%;
+  top: 0;
+  height: 100%;
+  transition: 300ms;
+  white-space: nowrap;
+  font-family: Rubik, sans-serif;
+  font-weight: 400;
+}
+
+.active {
+  left: 0 !important;
+  transition: 400ms;
+}
+
+.logo {
+  width: 65%;
+  height: 70px;
+  display: block;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  line-height: 2.8;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  transition: transform 300ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+li:hover,
+.logout:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.adminCategory li span,
+.logout span {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  transition: transform 300ms cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.userProfilePicture {
+  width: 40px;
+  height: 40px;
+  border: 3px solid gray;
+  border-radius: 50%;
+}
+
+.userProfilePicture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+@media (min-width: 876px) {
+  .sidebar {
+    left: 0;
+  }
+}
+
+@media (max-width: 875px) {
+  .sidebar {
+    left: -100%;
+    transition: 300ms;
+  }
+}

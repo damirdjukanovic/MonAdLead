@@ -1,0 +1,112 @@
+.modal {
+  width: clamp(240px, 360px, 80%);
+  height: clamp(450px 80% 85%);
+  margin: auto;
+  padding: 0 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 480px;
+}
+
+.modal h4 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-block-end: 0.8em;
+}
+
+.modal form {
+  margin-top: 30px;
+  overflow: visible;
+}
+
+.orangeGradient {
+  background: var(--gradient);
+}
+
+.closeButton {
+  padding: 0 2rem;
+  height: 2.5rem;
+  margin: 2rem auto 1rem 0;
+  background: #101111;
+  /* border: 1px dashed #9a9a9a99; */
+  color: #ffaa00;
+  border-radius: 4px;
+  transition: background ease 400ms;
+  box-shadow: 1px 1px 15px #03030399;
+}
+
+.group {
+  position: relative;
+  overflow: visible;
+}
+
+.group input {
+  font-size: 1rem;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-top: 17px;
+  transition: 0.2s;
+  background: transparent;
+}
+
+.group input:focus {
+  outline: none !important;
+  margin-top: 27px;
+  border: none;
+  box-shadow: 0 0 3px #719ece;
+}
+
+.selectStatus {
+  display: flex;
+  align-items: center;
+}
+
+.selectStatus select {
+  height: 30px;
+  width: 80%;
+  margin-left: 10px;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+}
+
+.group label {
+  color: #999;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 7px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.group input:focus ~ label,
+input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #5264ae;
+}
+
+.createUserButtonDiv {
+  width: 100%;
+  text-align: center;
+}
+
+.createUserButtonDiv button {
+  margin-top: 15px;
+}
+
+@media (max-width: 875px) {
+  .modal {
+    margin-top: 15px;
+  }
+}
