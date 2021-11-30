@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./Login.module.css";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import BasicTextFields from "./TextField";
 import { loginUser } from "../../actions/authActions";
 import { logout } from "../../actions/authActions";
@@ -8,7 +10,8 @@ import { logout } from "../../actions/authActions";
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { loginUser } = props;
+  const { loginUser, isAuthenticated } = props;
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +19,10 @@ function Login(props) {
     setUsername("");
     setPassword("");
   };
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/home");
+  }, [isAuthenticated]);
 
   return (
     <div className={s.Login}>
@@ -57,4 +64,8 @@ function Login(props) {
   );
 }
 
-export default connect(null, { loginUser, logout })(Login);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { loginUser, logout })(Login);

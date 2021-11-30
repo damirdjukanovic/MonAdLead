@@ -10,6 +10,10 @@
   border-radius: 10px;
   padding-top: 20px;
   background-color: var(--lightgray-primary);
+  box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%),
+    0 3px 5px -1px rgb(0 0 0 / 20%);
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
 }
 
 .profileTop {
@@ -57,4 +61,40 @@
 
 .profileSocial svg {
   margin-right: 10px;
+}
+
+.workExperience {
+  margin-top: 40px;
+  width: 355px;
+  height: 320px;
+  border-radius: 10px;
+  background-color: var(--lightgray-primary);
+  box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%),
+    0 3px 5px -1px rgb(0 0 0 / 20%);
+  padding: 25px;
+  padding-top: 10px;
+  background-color: #d9e4f5;
+  background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+}
+
+.workExperience p {
+  font-size: 0.9rem;
+}
+
+.workExperience .headline {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.timelineItem {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.timelineItem svg {
+  width: 0.9rem;
+  height: 0.9rem;
 }

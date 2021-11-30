@@ -25,7 +25,7 @@ function Table(props) {
 
   const [users, setUsers] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [index, setIndex] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
@@ -68,9 +68,8 @@ function Table(props) {
     setLimit(resPerPage);
   };
 
-  const handleDropdown = (i, e) => {
-    const elementId = e.target.id;
-    setIndex(elementId);
+  const handleDropdown = (id) => {
+    setUserId(id);
     setIsDropdownOpen(!isDropdownOpen);
   };
 
@@ -88,103 +87,113 @@ function Table(props) {
     setModalVersion("create");
   };
 
+  const renderTableTop = () => {
+    return (
+      <div className={s.tableTop}>
+        <div className={s.tableTopResults}>
+          <p>Results : </p>
+          <select
+            name="results"
+            onChange={(e) => handleChange(e)}
+            className={s.tableSelect}
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <div className={s.pages}>
+          {page !== 1 && (
+            <ArrowBackIcon onClick={handlePageBack} className={s.arrowLeft} />
+          )}
+          <p>{page}</p>
+          {page !== totalPages && (
+            <ArrowForwardIcon
+              onClick={handlePageNext}
+              className={s.arrowRight}
+            />
+          )}
+        </div>
+        <MotionButton
+          text="Add user"
+          color="#2596be"
+          click={handleCreateUserButton}
+        />
+      </div>
+    );
+  };
+
+  const renderTable = () => {
+    return (
+      <div className={s.tableWrapper}>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users &&
+              users.map((user, i) => (
+                <React.Fragment key={user.id}>
+                  <tr>
+                    <td>{user.id}</td>
+                    <td>{user.data.first_name}</td>
+                    <td>{user.data.last_name}</td>
+                    <td>{user.data.username}</td>
+                    <td>{user.data.email}</td>
+                    <td>
+                      <p
+                        className={`${s.status} ${getColor(user.data.status)}`}
+                      >
+                        {getStatus(user.data.status)}
+                      </p>
+                    </td>
+                    <td>
+                      <div className={s.permissionsCell}>
+                        <motion.button
+                          type="button"
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.95 }}
+                          className={s.optionsButton}
+                        >
+                          <ManageAccountsOutlinedIcon
+                            id={`${i}`}
+                            onClick={() => handleDropdown(user.id)}
+                          />
+                        </motion.button>
+                        {userId === user.id && isDropdownOpen && (
+                          <OptionsDropdown
+                            user={user}
+                            setModalUser={setModalUser}
+                            setIsDropdownOpen={setIsDropdownOpen}
+                            open={open}
+                            setModalVersion={setModalVersion}
+                          />
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                </React.Fragment>
+              ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className={s.tableContainer}>
-        <div className={s.tableTop}>
-          <div className={s.tableTopResults}>
-            <p>Results : </p>
-            <select
-              name="results"
-              onChange={(e) => handleChange(e)}
-              className={s.tableSelect}
-            >
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-            </select>
-          </div>
-          <div className={s.pages}>
-            {page !== 1 && (
-              <ArrowBackIcon onClick={handlePageBack} className={s.arrowLeft} />
-            )}
-            <p>{page}</p>
-            {page !== totalPages && (
-              <ArrowForwardIcon
-                onClick={handlePageNext}
-                className={s.arrowRight}
-              />
-            )}
-          </div>
-          <MotionButton
-            text="Add user"
-            color="#2596be"
-            click={handleCreateUserButton}
-          />
-        </div>
-        <div className={s.tableWrapper}>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Status</th>
-                <th>Options</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users &&
-                users.map((user, i) => (
-                  <React.Fragment key={user.id}>
-                    <tr>
-                      <td>{user.id}</td>
-                      <td>{user.data.first_name}</td>
-                      <td>{user.data.last_name}</td>
-                      <td>{user.data.username}</td>
-                      <td>{user.data.email}</td>
-                      <td>
-                        <p
-                          className={`${s.status} ${getColor(
-                            user.data.status
-                          )}`}
-                        >
-                          {getStatus(user.data.status)}
-                        </p>
-                      </td>
-                      <td>
-                        <div className={s.permissionsCell}>
-                          <motion.button
-                            type="button"
-                            whileHover={{ scale: 1.2 }}
-                            whileTap={{ scale: 0.95 }}
-                            className={s.optionsButton}
-                          >
-                            <ManageAccountsOutlinedIcon
-                              id={`${i}`}
-                              onClick={handleDropdown.bind(this, i)}
-                            />
-                          </motion.button>
-                          {index == i && isDropdownOpen && (
-                            <OptionsDropdown
-                              user={user}
-                              setModalUser={setModalUser}
-                              setIsDropdownOpen={setIsDropdownOpen}
-                              open={open}
-                              setModalVersion={setModalVersion}
-                            />
-                          )}
-                        </div>
-                      </td>
-                    </tr>
-                  </React.Fragment>
-                ))}
-            </tbody>
-          </table>
-        </div>
+        {renderTableTop()}
+        {renderTable()}
       </div>
     </>
   );

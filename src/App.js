@@ -11,6 +11,8 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 
+import { BallBeat } from "react-pure-loaders";
+import IsAuth from "./components/isAuth/IsAuth";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
 import Users from "./pages/users/Users";
@@ -18,22 +20,53 @@ import Profile from "./pages/profile/Profile";
 import Test from "./pages/Test";
 
 function App(props) {
-  const { isAuthenticated } = props;
+  const { isLoading } = props;
+
+  if (isLoading) return <BallBeat />;
 
   return (
     <Router>
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/test" element={<Test />} />
+        <Route
+          path="/"
+          element={
+            <IsAuth>
+              <Home />
+            </IsAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/home"
+          element={
+            <IsAuth>
+              <Home />
+            </IsAuth>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <IsAuth>
+              <Users />
+            </IsAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <IsAuth>
+              <Profile />
+            </IsAuth>
+          }
+        />
       </Routes>
     </Router>
   );
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isLoading: state.auth.isLoading,
 });
 
 export default connect(mapStateToProps, null)(App);

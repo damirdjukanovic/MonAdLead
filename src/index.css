@@ -1,5 +1,5 @@
 :root {
-  --lightgray-primary: #eef1f6;
+  --lightgray-primary: #eee;
   --lightgray-secondary: #8494a7;
   --backdrop: #000000e1;
   --white-gradient: linear-gradient(10deg, #eeeeee, #faf8f9, #ffffff);
@@ -51,9 +51,17 @@ body {
 
 .content {
   width: calc(100vw - 225px);
-  height: calc(100vh - 75px);
+  min-height: calc(100vh - 75px);
   position: relative;
   left: 225px;
   top: 75px;
   transition: 0.3s;
+  background-color: var(--lightgray-primary);
+}
+
+@media (max-width: 875px) {
+  .content {
+    width: 100%;
+    left: 0px;
+  }
 }

@@ -80,3 +80,9 @@ ul {
 
   font-size: 0.7rem;
 }
+
+@media (max-width: 875px) {
+  .Login {
+    grid-template-columns: 1fr 0fr;
+  }
+}

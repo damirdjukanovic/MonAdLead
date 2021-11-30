@@ -11,6 +11,7 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import GridViewIcon from "@mui/icons-material/GridView";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import LogoutIcon from "@mui/icons-material/Logout";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 function Navbar(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,13 +23,16 @@ function Navbar(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated) navigate("/");
+    if (!isAuthenticated) navigate("/login");
   }, [isAuthenticated]);
 
   return (
     <>
       <div className={s.navbar}>
         <MenuIcon onClick={() => toggleSidebar()} />
+        <div className={s.navbarIcons}>
+          <NotificationsNoneIcon />
+        </div>
         {user && (
           <div className={s.navbarUserName}>
             <p>
@@ -54,7 +58,7 @@ function Navbar(props) {
               </Link>
             </li>
             <li>
-              <Link to="/">
+              <Link to="/home">
                 <GridViewIcon />
                 <span>Dashboard</span>
               </Link>
